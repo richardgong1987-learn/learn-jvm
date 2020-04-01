@@ -2,6 +2,6 @@
 
 ![jvm架构图](./imgs/jvm-architecture.png)
 
-1. ## [内存结构](./memory-structure.md)
+## [内存结构](./memory-structure.md)
 
-
+## [垃圾回收](./gc.md)

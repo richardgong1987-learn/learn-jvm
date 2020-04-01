@@ -1,0 +1,17 @@
+Java HotSpot(TM) 64-Bit Server VM (25.181-b13) for bsd-amd64 JRE (1.8.0_181-b13), built on Jul  7 2018 01:02:31 by "java_re" with gcc 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.11.00)
+Memory: 4k page, physical 16777216k(285044k free)
+
+/proc/meminfo:
+
+CommandLine flags: -XX:InitialHeapSize=5242880 -XX:MaxHeapSize=5242880 -XX:+PrintGC -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC 
+0.106: [GC (Allocation Failure)  1024K->543K(5632K), 0.0014503 secs]
+0.138: [GC (Allocation Failure)  1567K->671K(5632K), 0.0014910 secs]
+0.147: [GC (System.gc())  2921K->2759K(5632K), 0.0012528 secs]
+0.149: [Full GC (System.gc())  2759K->2562K(5632K), 0.0051664 secs]
+0.258: [GC (Allocation Failure)  2757K->2722K(5632K), 0.0016879 secs]
+0.260: [GC (Allocation Failure)  2722K->2690K(5632K), 0.0010908 secs]
+0.261: [Full GC (Allocation Failure)  2690K->2567K(5632K), 0.0070167 secs]
+0.268: [GC (Allocation Failure)  2567K->2567K(5632K), 0.0011312 secs]
+0.269: [Full GC (Allocation Failure)  2567K->501K(5632K), 0.0062508 secs]
+0.276: [GC (System.gc())  2569K->2645K(5632K), 0.0009032 secs]
+0.277: [Full GC (System.gc())  2645K->501K(5632K), 0.0060311 secs]
