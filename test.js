@@ -1,4 +1,15 @@
-var bet_number = '13113';
+var fun = function () {
+    var i = 0;
+    try {
+        i = 1;
+        return i;
+    } catch (e) {
+        i = 2;
+        return i;
 
-let number = bet_number.split(bet_number[0]).length - 1;
-console.log(number)
+    } finally {
+        i = 3;
+    }
+}
+
+console.log(fun());
