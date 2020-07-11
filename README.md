@@ -1,6 +1,10 @@
 # JVM性能调优学习
 
-![jvm架构图](./imgs/jvm-architecture.png)
+JVM是一个规范,就像sql规范,它并不是一个具体的软件. 不同的厂家,有不同的jvm实现
+
+这里只讲hotspot的jvm实现,其它厂家实现的,也都是大同小异
+
+
 
 ## [1.内存结构](./memory-structure.md)
 
