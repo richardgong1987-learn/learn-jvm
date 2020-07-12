@@ -347,6 +347,8 @@ Direct Memory
 
 **不受 JVM 内存回收管理**
 
+![image-20200712130548255](images/memory-structure/image-20200712130548255.png)
+
 
 
 ### 6.2 分配和回收原理
