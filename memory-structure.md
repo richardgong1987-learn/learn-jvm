@@ -353,11 +353,19 @@ Direct Memory
 
 ### 6.2 分配和回收原理
 
-使用了 Unsafe 对象完成直接内存的分配回收，并且回收需要主动调用 freeMemory 方法
+使用了 **Unsafe 对象完成直接内存的分配回收**，并且回收需要主动调用 **freeMemory 方法**
 
-ByteBuffer 的实现类内部，使用了 Cleaner （虚引用）来监测 ByteBuffer 对象，一旦
+ByteBuffer 的实现类内部，**使用了 Cleaner （虚引用）来监测 ByteBuffer 对象**，一旦
 
-ByteBuffer 对象被垃圾回收，那么就会由 ReferenceHandler 线程通过 Cleaner 的 clean 方法调
+ByteBuffer 对象被垃圾回收，那么就会由 **ReferenceHandler 线程通过 Cleaner 的 clean 方法调**
 
-用 freeMemory 来释放直接内存
+**用 freeMemory 来释**放直接内存
+
+
+
+注意:
+
+```
+尽量不要使用System.GC(),因为是会触发Full GC和其它的GC, 性能不好. 一般禁止使用
+```
 
