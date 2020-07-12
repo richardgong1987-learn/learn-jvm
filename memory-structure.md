@@ -285,31 +285,77 @@ jvm参数: -XX:MaxPermSize=8m
 
 ### 5.6 StringTable 位置
 
+![image-20200711230013138](images/memory-structure/image-20200711230013138.png)
+
+- 在1.6时,它在永久代当中
+
+
+
+![image-20200711230045163](images/memory-structure/image-20200711230045163.png)
+
+**在jdk1.7, 1.8中已经移到了堆中,因为在1.6时,在永久代中,回收效率很低.所以把它移到了到堆中.
+
+
+
+```
+-XX:MaxPermSize=8m  这里设置永久代8m
+
+-Xmx10m 设置堆内存,设置堆内存10m
+
+在演示这个回收前,可以关掉-XX:-UseGCOverheadLimit来禁止GC抛异常
+
+```
+
 
 
 ### 5.7 StringTable 垃圾回收
 
+```
+-Xmx10m 设置堆内存10m
+-XX:+PrintStringTableStatistic 打印StringTable统计信息
+-XX:+PrintGCDetails -verbose    打印垃圾回收的详细信息,和,花费时间
 
+```
 
 
 
 ### 5.8 StringTable 性能调优
 
-调整 
+StringTable其实也是一样hash表,一般默认桶个数是60013个,最小只能是大于1009的数
+
+调化思路:在jvm上 调整
 
 ```
 -XX:StringTableSize=桶个数
 ```
 
-考虑将字符串对象是否入池
+这样就可以把桶个数放大,性就会更好一点. 因为桶的数量多,就不减少了hash表的查找次数,所以性能会好很多 
+
+Twitter案例,用String.intern()方法,节省了大量内存
 
 
 
 ## 6.直接内存
 
-6.1 定义
+### 6.1 定义
 
 Direct Memory
 
-常见
+常见于 **NIO 操作时**，用于数据缓冲区
+
+**分配回收成本较高**，但**读写性能高**
+
+**不受 JVM 内存回收管理**
+
+
+
+### 6.2 分配和回收原理
+
+使用了 Unsafe 对象完成直接内存的分配回收，并且回收需要主动调用 freeMemory 方法
+
+ByteBuffer 的实现类内部，使用了 Cleaner （虚引用）来监测 ByteBuffer 对象，一旦
+
+ByteBuffer 对象被垃圾回收，那么就会由 ReferenceHandler 线程通过 Cleaner 的 clean 方法调
+
+用 freeMemory 来释放直接内存
 
